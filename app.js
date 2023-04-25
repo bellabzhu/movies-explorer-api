@@ -9,7 +9,7 @@ const cors = require('cors');
 const { limiter } = require('./middlewares/limiter');
 const userRouter = require('./routes/users');
 const movieRouter = require('./routes/movies');
-const { login, logout, createUser } = require('./controllers/users');
+const { login, signout, createUser } = require('./controllers/users');
 const Error404 = require('./errors/Error404');
 const { auth } = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
@@ -79,7 +79,7 @@ app.use(auth);
 
 app.use('/users', userRouter);
 app.use('/movies', movieRouter);
-app.delete('/logout', logout);
+app.delete('/signout', signout);
 app.use('/*', (req, res, next) => {
   next(new Error404('Страница не найдена'));
 });

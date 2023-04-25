@@ -109,7 +109,7 @@ module.exports.login = async (req, res, next) => {
   }
 };
 
-module.exports.logout = async (req, res, next) => {
+module.exports.signout = async (req, res, next) => {
   try {
     res
       .status(statusCode.OK)
