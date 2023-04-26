@@ -4,7 +4,7 @@
 
 ## Ссылки на проект
 
-IP 84.201.136.83
+IP 51.250.110.160
 
 Frontend https://bella.nomoredomains.monster
 
