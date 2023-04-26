@@ -30,24 +30,18 @@ module.exports.getUser = async (req, res, next) => {
 module.exports.createUser = (req, res, next) => {
   const {
     name,
-    about,
-    avatar,
     email,
     password,
   } = req.body;
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
       name,
-      about,
-      avatar,
       email,
       password: hash,
     }))
     .then((user) => res.status(statusCode.OK_NEW).send({
       email: user.email,
       name: user.name,
-      about: user.about,
-      avatar: user.avatar,
       _id: user._id,
     }))
     .catch((err) => {
