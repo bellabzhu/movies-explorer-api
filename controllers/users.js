@@ -6,6 +6,7 @@ const Error401 = require('../errors/Error401');
 const Error404 = require('../errors/Error404');
 const Error409 = require('../errors/Error409');
 const { statusCode } = require('../utils/errors');
+const { JWT_DEV_MODE } = require('../utils/constants');
 const User = require('../models/user');
 
 const { NODE_ENV, JWT_SECRET } = process.env;
@@ -87,7 +88,7 @@ module.exports.signin = async (req, res, next) => {
     }
     const token = await jwt.sign(
       { _id: user._id },
-      NODE_ENV === 'production' ? JWT_SECRET : 'you-shall-not-pass-hooooman',
+      NODE_ENV === 'production' ? JWT_SECRET : JWT_DEV_MODE,
       { expiresIn: '7d' },
     );
     res
