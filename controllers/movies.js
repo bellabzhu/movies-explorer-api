@@ -31,9 +31,10 @@ module.exports.createMovie = async (req, res, next) => {
 
 module.exports.delMovie = async (req, res, next) => {
   try {
-    const movie = await Movie.findById(req.params.movieId);
+    const movie = await Movie.findById(req.params.id);
+    console.log(req.params.id);
     if (!movie) {
-      next(new Error404('Фильм с таким таким id не найдена.'));
+      next(new Error404('Фильм с таким таким id не найден.'));
       return;
     }
     if (req.user._id !== movie.owner.toString()) {
