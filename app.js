@@ -9,7 +9,7 @@ const cors = require('cors');
 const { limiter } = require('./middlewares/limiter');
 const userRouter = require('./routes/users');
 const movieRouter = require('./routes/movies');
-const { login, signout, createUser } = require('./controllers/users');
+const { signin, signout, createUser } = require('./controllers/users');
 const Error404 = require('./errors/Error404');
 const { auth } = require('./middlewares/auth');
 const { handleErrors } = require('./middlewares/handleErrors');
@@ -26,6 +26,8 @@ const options = {
     'https://localhost:3000',
     'http://localhost:3001',
     'https://localhost:3001',
+    'http://bella.nomoredomains.monster',
+    'https://bella.nomoredomains.monster',
   ],
   methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
   preflightContinue: false,
@@ -65,7 +67,7 @@ app.post('/signin', celebrate({
     email: Joi.string().required().email(),
     password: Joi.string().required(),
   }),
-}), login);
+}), signin);
 
 app.post('/signup', celebrate({
   body: Joi.object().keys({
