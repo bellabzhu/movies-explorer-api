@@ -6,7 +6,7 @@ const FORBIDDEN = 403;
 const NOT_FOUND = 404;
 const METHOD_NOT_ALLOWED = 405;
 const CONFLICT = 409;
-const INTERNAL_SERVER = 500;
+const INTERNAL_SERVER_ERROR = 500;
 
 module.exports.statusCode = {
   OK,
@@ -14,7 +14,7 @@ module.exports.statusCode = {
   BAD_REQUEST,
   NOT_FOUND,
   METHOD_NOT_ALLOWED,
-  INTERNAL_SERVER,
+  INTERNAL_SERVER_ERROR,
   FORBIDDEN,
   CONFLICT,
   UNAUTHORIZED,
