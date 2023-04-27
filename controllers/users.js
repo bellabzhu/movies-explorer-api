@@ -15,14 +15,14 @@ const mongoUpdateConfig = { new: true, runValidators: true };
 
 module.exports.getUser = async (req, res, next) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(req.body._id);
     if (!user) {
       next(new Error404('Пользователь c таким id не найден.'));
       return;
     }
     res
       .status(statusCode.OK)
-      .send(user);
+      .send({ name: user.name, email: user.email });
   } catch (err) {
     next(err);
   }
