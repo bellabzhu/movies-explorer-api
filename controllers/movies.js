@@ -7,7 +7,7 @@ const Error404 = require('../errors/Error404');
 
 module.exports.getUsersMovies = async (req, res, next) => {
   try {
-    const usersMovies = await Movie.find({owner: req.user._id});
+    const usersMovies = await Movie.find({ owner: req.user._id });
     res.status(statusCode.OK).send(usersMovies);
   } catch (err) {
     next(err);
