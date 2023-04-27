@@ -67,6 +67,8 @@ module.exports.updateUser = async (req, res, next) => {
   } catch (err) {
     if (err instanceof mongoose.Error.ValidationError) {
       next(new Error400('Переданы некорректные данные.'));
+    } else if (err.code === 11000) {
+      next(new Error409('Пользователь с таким email уже зарегистрирован.'));
     } else {
       next(err);
     }
