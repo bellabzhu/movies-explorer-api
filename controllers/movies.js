@@ -40,7 +40,7 @@ module.exports.delMovie = async (req, res, next) => {
       next(new Error403('Это не ваш фильм! Удаляйте свой!'));
       return;
     }
-    const deletedMovie = movie.deleteOne();
+    const deletedMovie = await movie.deleteOne();
     res.status(statusCode.OK).send(deletedMovie);
   } catch (err) {
     if (err instanceof mongoose.Error.CastError) {
