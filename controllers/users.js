@@ -15,7 +15,7 @@ const mongoUpdateConfig = { new: true, runValidators: true };
 
 module.exports.getUser = async (req, res, next) => {
   try {
-    const user = await User.findById(req.body._id);
+    const user = await User.findById(req.user._id);
     if (!user) {
       next(new Error404('Пользователь c таким id не найден.'));
       return;
