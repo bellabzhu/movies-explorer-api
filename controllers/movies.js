@@ -5,10 +5,10 @@ const Error400 = require('../errors/Error400');
 const Error403 = require('../errors/Error403');
 const Error404 = require('../errors/Error404');
 
-module.exports.getMovies = async (req, res, next) => {
+module.exports.getUsersMovies = async (req, res, next) => {
   try {
-    const movies = await Movie.find({});
-    res.status(statusCode.OK).send(movies);
+    const usersMovies = await Movie.find({owner: req.user._id});
+    res.status(statusCode.OK).send(usersMovies);
   } catch (err) {
     next(err);
   }
