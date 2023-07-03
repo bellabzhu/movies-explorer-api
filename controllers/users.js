@@ -101,10 +101,10 @@ module.exports.signin = async (req, res, next) => {
         secure: true,
         sameSite: 'none',
       })
-      .send({ 
+      .send({
         message: 'Авторизация успешна. Токен сохранен в куки',
         name: user.name,
-        email: user.email, 
+        email: user.email,
       });
   } catch (err) {
     next(err);
@@ -115,9 +115,9 @@ module.exports.signout = async (req, res, next) => {
   try {
     res
       .status(statusCode.OK)
-      .clearCookie('token', { 
-        sameSite: 'none', 
-        secure: true 
+      .clearCookie('token', {
+        sameSite: 'none',
+        secure: true,
       })
       .send({ message: 'Вы успешно разлогинились!' });
   } catch (err) {
