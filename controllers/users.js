@@ -41,8 +41,8 @@ module.exports.createUser = (req, res, next) => {
       password: hash,
     }))
     .then((user) => res.status(statusCode.OK_NEW).send({
-      email: user.email,
       name: user.name,
+      email: user.email,
       _id: user._id,
     }))
     .catch((err) => {
@@ -99,8 +99,13 @@ module.exports.signin = async (req, res, next) => {
         maxAge: 3600000 * 24 * 7,
         httpOnly: true,
         secure: true,
+        sameSite: 'none',
       })
-      .send({ message: 'Авторизация успешна. Токен сохранен в куки' });
+      .send({ 
+        message: 'Авторизация успешна. Токен сохранен в куки',
+        name: user.name,
+        email: user.email, 
+      });
   } catch (err) {
     next(err);
   }
@@ -110,7 +115,10 @@ module.exports.signout = async (req, res, next) => {
   try {
     res
       .status(statusCode.OK)
-      .clearCookie('token')
+      .clearCookie('token', { 
+        sameSite: 'none', 
+        secure: true 
+      })
       .send({ message: 'Вы успешно разлогинились!' });
   } catch (err) {
     next(err);
