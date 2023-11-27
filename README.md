@@ -4,9 +4,6 @@ This repository contains the backend code for the project Movies Explorer. The p
 # Description
 This repository contains the backend code for a website built using Node.js, MongoDB, and Express.js. The backend provides the necessary APIs and functionality to interact with the database and handle various operations required by the website. It implements features such as registration, login, profile editing, and managing saved movies.
 
-## Live Demo
-Check out the [live demo](https://bella.nomoredomains.monster) of the project to see it in action.
-
 ## Frontend
 Check out the [frontend of this project](https://github.com/bellabzhu/movies-explorer-frontend) made with **React.js**.
 
